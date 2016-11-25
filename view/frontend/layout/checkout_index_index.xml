@@ -34,15 +34,17 @@
                                     <item name="children" xsi:type="array">
                                         <item name="billing-step" xsi:type="array">
                                             <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="sortOrder" xsi:type="string">17</item>
                                             <item name="children" xsi:type="array">
                                                 <item name="payment" xsi:type="array">
                                                     <item name="children" xsi:type="array">
                                                         <item name="renders" xsi:type="array">
+                                                            <!-- merge payment method renders here -->
                                                             <item name="children" xsi:type="array">
-                                                                <item name="faonni_bitcoin" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">Faonni_Bitcoin/js/view/payment/method-renderer</item>
+                                                                <item name="faonni_bitcoin-payments" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Faonni_Bitcoin/js/view/payment/bitcoin</item>
                                                                     <item name="methods" xsi:type="array">
-                                                                        <item name="testpayment" xsi:type="array">
+                                                                        <item name="faonni_bitcoin" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
                                                                     </item>
@@ -62,4 +64,4 @@
             </arguments>
         </referenceBlock>
     </body>
-</page> 
+</page>

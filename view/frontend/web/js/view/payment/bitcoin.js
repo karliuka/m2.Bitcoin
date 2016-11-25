@@ -20,14 +20,20 @@
  */
 define(
     [
-        'Magento_Checkout/js/view/payment/default'
+        'uiComponent',
+        'Magento_Checkout/js/model/payment/renderer-list'
     ],
-    function (Component) {
+    function (
+        Component,
+        rendererList
+    ) {
         'use strict';
-        return Component.extend({
-            defaults: {
-                template: 'Faonni_Bitcoin/payment/bitcoin'
+        rendererList.push(
+            {
+                type: 'faonni_bitcoin',
+                component: 'Faonni_Bitcoin/js/view/payment/method-renderer/bitcoin'
             }
-        });
+        );
+        return Component.extend({});
     }
 ); 
