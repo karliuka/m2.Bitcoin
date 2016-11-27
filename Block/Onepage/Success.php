@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php
 /**
  * Faonni
  *  
@@ -20,12 +19,11 @@
  * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <referenceContainer name="content">
-            <block class="Faonni\Bitcoin\Block\Onepage\Success" name="bitcoin.checkout.success" template="Faonni_Bitcoin::success.phtml" cacheable="false"/>
-        </referenceContainer>
-    </body>
-</page>
+namespace Faonni\Bitcoin\Block\Onepage;
+
+/**
+ * One page checkout success block
+ */
+class Success extends \Magento\Framework\View\Element\Template
+{
+} 

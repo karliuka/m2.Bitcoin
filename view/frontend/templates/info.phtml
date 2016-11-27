@@ -1,0 +1,43 @@
+<?php
+/**
+ * Faonni
+ *  
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade module to newer
+ * versions in the future.
+ * 
+ * @package     Faonni_Bitcoin
+ * @copyright   Copyright (c) 2016 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+$specificInfo = $block->getSpecificInformation();
+$title = $block->escapeHtml($block->getMethod()->getTitle());
+?>
+<dl class="payment-method">
+    <dt class="title"><?php /* @noEscape */ echo $title; ?></dt>
+<?php if ($specificInfo):?>
+    <dd class="content">
+        <table class="data table">
+            <caption class="table-caption"><?php /* @noEscape */ echo $title; ?></caption>
+            <?php foreach ($specificInfo as $label => $value):?>
+                <tr>
+                    <th scope="row"><?php echo $block->escapeHtml($label)?></th>
+                    <td>
+                        <?php /* @noEscape */ echo nl2br($block->escapeHtml(implode("\n", $block->getValueAsArray($value, true))));?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </dd>
+<?php endif;?>
+</dl>
+<?php echo $block->getChildHtml()?>
