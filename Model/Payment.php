@@ -23,7 +23,38 @@ namespace Faonni\Bitcoin\Model;
 
 use Magento\Payment\Model\Method\AbstractMethod;
 
+/**
+ * Bitcoin payment method model
+ *
+ * @method \Magento\Quote\Api\Data\PaymentMethodExtensionInterface getExtensionAttributes()
+ */
 class Payment extends AbstractMethod
 {
-	protected $_code = 'faonni_bitcoin';  
+    /**
+     * Payment method code
+     *
+     * @var string
+     */	
+	const PAYMENT_METHOD_BITCOIN_CODE = 'faonni_bitcoin';
+	
+    /**
+     * Payment method code
+     *
+     * @var string
+     */	
+	protected $_code = self::PAYMENT_METHOD_BITCOIN_CODE;
+	
+    /**
+     * Bitcoin payment block paths
+     *
+     * @var string
+     */
+    protected $_formBlockType = 'Faonni\Bitcoin\Block\Form';
+
+    /**
+     * Info instructions block path
+     *
+     * @var string
+     */
+    protected $_infoBlockType = 'Faonni\Bitcoin\Block\Info';	
 } 
