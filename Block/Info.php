@@ -29,7 +29,7 @@ class Info extends \Magento\Payment\Block\Info
     /**
      * @var string
      */
-    protected $_template = 'Magento_Payment::info/default.phtml';
+    protected $_template = 'Faonni_Bitcoin::info.phtml';
 
     /**
      * Render as PDF
@@ -37,7 +37,7 @@ class Info extends \Magento\Payment\Block\Info
      */
     public function toPdf()
     {
-        $this->setTemplate('Magento_Payment::info/pdf/default.phtml');
+        $this->setTemplate('Faonni_Bitcoin::info/pdf.phtml');
         return $this->toHtml();
     }
 }

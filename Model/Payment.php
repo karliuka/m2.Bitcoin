@@ -43,18 +43,69 @@ class Payment extends AbstractMethod
      * @var string
      */	
 	protected $_code = self::PAYMENT_METHOD_BITCOIN_CODE;
-	
+
     /**
-     * Bitcoin payment block paths
+     * Payment Method feature
      *
-     * @var string
+     * @var bool
      */
-    protected $_formBlockType = 'Faonni\Bitcoin\Block\Form';
+    protected $_isGateway = true;
+    	
+    /**
+     * Payment Method feature
+     *
+     * @var bool
+     */
+    protected $_canCapture = true;
 
     /**
      * Info instructions block path
      *
      * @var string
      */
-    protected $_infoBlockType = 'Faonni\Bitcoin\Block\Info';	
+    protected $_infoBlockType = 'Faonni\Bitcoin\Block\Info';
+    
+    /**
+     * Assign data to info model instance
+     *
+     * @param array|\Magento\Framework\DataObject $data
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @api
+     */
+    public function assignData(\Magento\Framework\DataObject $data)
+    {
+        parent::assignData($data);
+
+        return $this;
+    }    
+
+    /**
+     * Capture payment abstract method
+     *
+     * @param \Magento\Framework\DataObject|InfoInterface $payment
+     * @param float $amount
+     * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @api
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function capture(\Magento\Payment\Model\InfoInterface $payment, $amount)
+    {
+
+
+        return $this;
+    }  
+
+    /**
+     * Check method for processing with base currency
+     *
+     * @param string $currencyCode
+     * @return bool
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function canUseForCurrency($currencyCode)
+    {
+        return true;
+    }      	
 } 
