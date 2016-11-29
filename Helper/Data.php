@@ -60,4 +60,34 @@ class Data extends AbstractHelper
 	{
 		return $this->storeManager->getStore();
     }
+    
+    /**
+     * Retrieve store base currency code
+     *
+     * @return string
+     */
+    public function getBaseCurrencyCode()
+    {
+        return $this->getStore()->getBaseCurrencyCode();
+    }  
+      
+    /**
+     * Retrieve current store currency code
+     *
+     * @return string
+     */
+    public function getCurrentCurrencyCode()
+    {
+        return $this->getStore()->getCurrentCurrencyCode();
+    }
+        
+    /**
+     * Retrieve BTC rate for the base currency
+     *
+     * @return float
+     */
+    public function getExchangeRate()
+    {
+		
+	}	
 }
