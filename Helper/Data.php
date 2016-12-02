@@ -88,6 +88,8 @@ class Data extends AbstractHelper
      */
     public function getExchangeRate()
     {
-		
+		$blockchain = new \Blockchain\Blockchain();
+		$rates = new \Blockchain\Rates\Rates($blockchain);
+		return $rates->toBTC(1, $this->getCurrentCurrencyCode());
 	}	
 }
