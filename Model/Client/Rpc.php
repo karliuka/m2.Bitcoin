@@ -86,7 +86,7 @@ class Rpc
     /**
      * Returns the Zend Http Client
 	 * 
-     * @return Zend_Http_Client
+     * @return \Zend_Http_Client
      */
     public function getClient() 
 	{
@@ -112,7 +112,7 @@ class Rpc
 				->setRawData(json_encode(array('method' => $method, 'params' => $params)))
 				->setHeaders('Content-type', 'application/json');
 				
-			$response = $client->request(Zend_Http_Client::POST);
+			$response = $client->request(\Zend_Http_Client::POST);
 			if($response->isSuccessful()){
 				$data = json_decode($response->getBody());
 				if (empty($data->error) && !empty($data->result)){
