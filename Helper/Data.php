@@ -1,29 +1,14 @@
 <?php
 /**
- * Faonni
- *  
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
- *
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade module to newer
- * versions in the future.
+ * Copyright © 2011-2017 Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * 
- * @package     Faonni_Bitcoin
- * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * See COPYING.txt for license details.
  */
 namespace Faonni\Bitcoin\Helper;
 
-use \Magento\Framework\App\Helper\Context;
-use \Magento\Store\Model\StoreManagerInterface;
-use \Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Sales\Model\Order;
 
 /**
  * Bitcoin Helper Data
@@ -31,65 +16,152 @@ use \Magento\Framework\App\Helper\AbstractHelper;
 class Data extends AbstractHelper
 {
     /**
-     * Store Manager Instance
-     *
-     * @var Magento\Store\Model\StoreManagerInterface
+     * Enabled config path
      */
-    protected $storeManager;
-	
+    const XML_CONFIG_ENABLED = 'payment/faonni_bitcoin/active';
+    	
     /**
-     * Constructor	
-	 *
-     * @param Context $context
-     * @param StoreManagerInterface $storeManager
+     * Account prefix config path
      */
-    public function __construct(
-        Context $context,
-		StoreManagerInterface $storeManager
-    ) {
-        $this->storeManager = $storeManager;
-		parent::__construct($context);
+    const XML_CONFIG_PREFIX = 'payment/faonni_bitcoin/prefix';    
+    	
+    /**
+     * Host config path
+     */
+    const XML_CONFIG_HOST = 'payment/faonni_bitcoin/host';
+
+    /**
+     * Port config path
+     */
+    const XML_CONFIG_PORT = 'payment/faonni_bitcoin/port';
+ 
+    /**
+     * Ssl config path
+     */
+    const XML_CONFIG_SSL = 'payment/faonni_bitcoin/ssl';
+
+    /**
+     * Username config path
+     */
+    const XML_CONFIG_USER = 'payment/faonni_bitcoin/user';
+
+    /**
+     * Password config path
+     */
+    const XML_CONFIG_PASS = 'payment/faonni_bitcoin/pass';
+    
+    /**
+     * Confirmation config path
+     */
+    const XML_CONFIG_CONFIRM = 'payment/faonni_bitcoin/confirm';    
+    
+    /**
+     * Expire days config path
+     */
+    const XML_CONFIG_EXPIRE = 'payment/faonni_bitcoin/expire';  
+    
+    /**
+     * Rate import service config path
+     */
+    const XML_CONFIG_SERVICE = 'payment/faonni_bitcoin/service';  
+    
+    /**
+     * Check bitcoin payment functionality should be enabled
+     *
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->isModuleOutputEnabled() && 
+			$this->_getConfig(self::XML_CONFIG_ENABLED);
     }
-	
+    	     
     /**
-     * Return Store fixture
+     * Retrieve confirmation
      *
-     * @return Store
-     */	
-    public function getStore()
-	{
-		return $this->storeManager->getStore();
+     * @return string
+     */
+    public function getConfirmation()
+    {
+        return $this->_getConfig(self::XML_CONFIG_CONFIRM);
+    }
+             
+    /**
+     * Retrieve expire
+     *
+     * @return string
+     */
+    public function getExpire()
+    {
+        return $this->_getConfig(self::XML_CONFIG_EXPIRE);
+    }
+             
+    /**
+     * Retrieve service
+     *
+     * @return string
+     */
+    public function getService()
+    {
+        return $this->_getConfig(self::XML_CONFIG_SERVICE);
     }
     
     /**
-     * Retrieve store base currency code
+     * Retrieve prefix
      *
      * @return string
      */
-    public function getBaseCurrencyCode()
+    public function getPrefix()
     {
-        return $this->getStore()->getBaseCurrencyCode();
-    }  
-      
+        return $this->_getConfig(self::XML_CONFIG_PREFIX);
+    }    
+	
     /**
-     * Retrieve current store currency code
+     * Round up and cast specified amount to float or string
      *
+     * @param string|float $amount
      * @return string
      */
-    public function getCurrentCurrencyCode()
+    public function formatAmount($amount)
     {
-        return $this->getStore()->getCurrentCurrencyCode();
+        return (string)number_format($amount, 10);
+    } 
+    
+    /**
+     * Retrieve account neme
+     *
+     * @param Order $order
+     * @return string
+     */
+    public function getAccount(Order $order)
+    {
+		return $this->getPrefix() . $order->getIncrementId();
     }
-        
+    	
     /**
-     * Retrieve BTC rate for the base currency
+     * Retrieve configure smtp settings
      *
-     * @return float
+     * @return array
      */
-    public function getExchangeRate()
+    public function getConfig()
     {
-		$blockchain = new \Blockchain\Blockchain();
-		$rates = new \Blockchain\Rates\Rates($blockchain);
-		return $rates->toBTC(1, $this->getCurrentCurrencyCode());
-	}	
+		return [
+			'host' => $this->_getConfig(self::XML_CONFIG_HOST),
+			'port' => $this->_getConfig(self::XML_CONFIG_PORT),
+			'ssl'  => $this->_getConfig(self::XML_CONFIG_SSL),
+			'user' => $this->_getConfig(self::XML_CONFIG_USER),
+			'pass' => $this->_getConfig(self::XML_CONFIG_PASS)
+		];        
+    }    
+    
+    /**
+     * Retrieve store configuration data
+     *
+     * @param   string $path
+     * @return  string|null
+     */
+    protected function _getConfig($path)
+    {
+        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
+    }
 }

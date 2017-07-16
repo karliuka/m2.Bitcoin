@@ -1,0 +1,10 @@
+.actions-bitcoin-test .message-test {
+	display:inline-block;
+	margin-left:10px;
+} 
+.actions-bitcoin-test .error {
+	color:red;
+} 
+.actions-bitcoin-test .success {
+	color:green;
+}  

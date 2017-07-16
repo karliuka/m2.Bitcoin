@@ -1,24 +1,9 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Faonni
- *  
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Open Software License (OSL 3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/osl-3.0.php
- *
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade module to newer
- * versions in the future.
+ * Copyright © 2011-2017 Karliuka Vitalii(karliuka.vitalii@gmail.com)
  * 
- * @package     Faonni_Bitcoin
- * @copyright   Copyright (c) 2017 Karliuka Vitalii(karliuka.vitalii@gmail.com) 
- * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * See COPYING.txt for license details.
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -26,19 +11,21 @@
     <default>
         <payment>
             <faonni_bitcoin>
-                <active>1</active>
-                <model>Faonni\Bitcoin\Model\Payment</model>
+                <active>0</active>
+                <model>Faonni\Bitcoin\Model\Bitcoin</model>
                 <title>Bitcoin</title>
+                <order_status>processing</order_status>
                 <payment_action>authorize_capture</payment_action>
                 <visible_on_cart>1</visible_on_cart>
-                <order_status>pending_payment</order_status>
+                <prefix>111.</prefix>
                 <host>127.0.0.1</host>
                 <port>8332</port>
                 <ssl>0</ssl>
-                <user></user>
-                <pass backend_model="Magento\Config\Model\Config\Backend\Encrypted"></pass>
+                <user backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <pass backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
                 <confirm>6</confirm>
-                <expire>14</expire>
+                <expire>7</expire>
+                <service>blockchain</service>
                 <sort_order>167</sort_order>
                 <allowspecific>0</allowspecific>
             </faonni_bitcoin>

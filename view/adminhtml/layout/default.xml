@@ -8,9 +8,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <referenceContainer name="content">
-            <block class="Faonni\Bitcoin\Block\Onepage\Success" name="bitcoin.checkout.success" template="Faonni_Bitcoin::success.phtml" cacheable="false"/>
-        </referenceContainer>
-    </body>
-</page>
+	<head>
+		<css src="Faonni_Bitcoin::css/bitcoin.css"/>
+	</head>
+</page> 
