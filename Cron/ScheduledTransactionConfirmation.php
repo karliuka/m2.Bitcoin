@@ -98,9 +98,9 @@ class ScheduledTransactionConfirmation
 					$payment->setTransactionAdditionalInfo('address', $explorer->getAddress());
 					$payment->setTransactionAdditionalInfo('amount', $transaction->amount);
 					/* fraud detected */
-					//if (!$this->matchAmount($explorer->getAmount(), $transaction->amount)) {
-						//$payment->setIsFraudDetected(true);			
-					//}			
+					if (!$this->matchAmount($explorer->getAmount(), $transaction->amount)) {
+						$payment->setIsFraudDetected(true);			
+					}			
 					$this->capture($order);										
 					$explorer->setStatus(1);		
 				}														
