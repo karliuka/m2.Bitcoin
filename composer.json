@@ -1,6 +1,6 @@
 {
     "name": "faonni/module-bitcoin",
-    "description": "",
+    "description": "A Bitcoin payment method for the Magento2 ecommerce app using Bitcoin RPC API.",
     "type": "magento2-module",
 	"version": "2.0.1",
 	"license": [
