@@ -16,57 +16,57 @@ use Magento\Sales\Model\Order;
 class Data extends AbstractHelper
 {
     /**
-     * Enabled config path
+     * Enabled Config Path
      */
     const XML_CONFIG_ENABLED = 'payment/faonni_bitcoin/active';
     	
     /**
-     * Account prefix config path
+     * Account Prefix Config Path
      */
     const XML_CONFIG_PREFIX = 'payment/faonni_bitcoin/prefix';    
     	
     /**
-     * Host config path
+     * Host Config Path
      */
     const XML_CONFIG_HOST = 'payment/faonni_bitcoin/host';
 
     /**
-     * Port config path
+     * Port Config Path
      */
     const XML_CONFIG_PORT = 'payment/faonni_bitcoin/port';
  
     /**
-     * Ssl config path
+     * Ssl Config Path
      */
     const XML_CONFIG_SSL = 'payment/faonni_bitcoin/ssl';
 
     /**
-     * Username config path
+     * Username Config Path
      */
     const XML_CONFIG_USER = 'payment/faonni_bitcoin/user';
 
     /**
-     * Password config path
+     * Password Config Path
      */
     const XML_CONFIG_PASS = 'payment/faonni_bitcoin/pass';
     
     /**
-     * Confirmation config path
+     * Confirmation Config Path
      */
     const XML_CONFIG_CONFIRM = 'payment/faonni_bitcoin/confirm';    
     
     /**
-     * Expire days config path
+     * Expire Days Config Path
      */
     const XML_CONFIG_EXPIRE = 'payment/faonni_bitcoin/expire';  
     
     /**
-     * Rate import service config path
+     * Rate Import Service Config Path
      */
     const XML_CONFIG_SERVICE = 'payment/faonni_bitcoin/service';  
     
     /**
-     * Check bitcoin payment functionality should be enabled
+     * Check Bitcoin Payment Functionality Should Be Enabled
      *
      * @return bool
      */
@@ -77,7 +77,7 @@ class Data extends AbstractHelper
     }
     	     
     /**
-     * Retrieve confirmation
+     * Retrieve Confirmation
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class Data extends AbstractHelper
     }
              
     /**
-     * Retrieve expire
+     * Retrieve Expire
      *
      * @return string
      */
@@ -97,7 +97,7 @@ class Data extends AbstractHelper
     }
              
     /**
-     * Retrieve service
+     * Retrieve Service
      *
      * @return string
      */
@@ -107,7 +107,7 @@ class Data extends AbstractHelper
     }
     
     /**
-     * Retrieve prefix
+     * Retrieve Prefix
      *
      * @return string
      */
@@ -117,7 +117,7 @@ class Data extends AbstractHelper
     }    
 	
     /**
-     * Round up and cast specified amount to float or string
+     * Round Up And Cast Specified Amount To Float Or String
      *
      * @param string|float $amount
      * @return string
@@ -128,7 +128,7 @@ class Data extends AbstractHelper
     } 
     
     /**
-     * Retrieve account neme
+     * Retrieve Account Neme
      *
      * @param Order $order
      * @return string
@@ -139,7 +139,7 @@ class Data extends AbstractHelper
     }
     	
     /**
-     * Retrieve configure smtp settings
+     * Retrieve Configure Smtp Settings
      *
      * @return array
      */
@@ -155,7 +155,7 @@ class Data extends AbstractHelper
     }    
     
     /**
-     * Retrieve store configuration data
+     * Retrieve Store Configuration Data
      *
      * @param   string $path
      * @return  string|null
