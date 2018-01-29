@@ -162,7 +162,11 @@ class ScheduledTransactionConfirmation
      */
     protected function matchAmount($amount, $transactionAmount)
     {
-        return $this->formatAmount($amount) == $this->formatAmount($transactionAmount);
+        return bccomp(
+			$this->formatAmount($amount), 
+			$this->formatAmount($transactionAmount), 
+			10
+		) < 1;
     }
        
     /**
